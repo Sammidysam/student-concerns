@@ -29,6 +29,6 @@ Template.body.events({
 
 Template.body.helpers({
 	concerns() {
-		return Concerns.find({});
+		return Concerns.find({}, { sort: { createdAt: -1 } });
 	}
 });
