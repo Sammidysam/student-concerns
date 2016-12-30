@@ -20,3 +20,9 @@ Template.body.events({
 		target.text.value = '';
 	}
 });
+
+Template.body.helpers({
+	concerns() {
+		return Concerns.find({});
+	}
+});

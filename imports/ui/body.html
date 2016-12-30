@@ -10,4 +10,14 @@
 		<br />
 		<input type="submit" value="Submit Concern" />
 	</form>
+
+	<ul>
+		{{#each concerns}}
+			{{> concern}}
+		{{/each}}
+	</ul>
 </body>
+
+<template name="concern">
+	<li>{{text}}</li>
+</template>
