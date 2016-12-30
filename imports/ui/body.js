@@ -12,10 +12,14 @@ Template.body.events({
 		const anonymous = target.anonymous.checked;
 		const text = target.text.value;
 
-		Concerns.insert({
-			text,
+		concern = {
+			text: text,
 			createdAt: new Date()
-		});
+		};
+		if (!anonymous && Meteor.userId())
+			concern["owner"] = Meteor.user().profile.name;
+
+		Concerns.insert(concern);
 
 		target.text.value = '';
 	}

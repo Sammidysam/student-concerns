@@ -1,6 +1,8 @@
 <body>
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">
+			{{> loginButtons}}
+
 			<header>
 				<h1 class="text-center">Have a concern?</h1>
 			</header>
@@ -20,15 +22,24 @@
 				<button type="submit" class="btn btn-default btn-block">Submit Concern</button>
 			</form>
 
-			<ul>
-				{{#each concerns}}
-					{{> concern}}
-				{{/each}}
-			</ul>
+			{{#if currentUser}}
+				<h1>Concerns</h1>
+
+				<ul>
+					{{#each concerns}}
+						{{> concern}}
+					{{/each}}
+				</ul>
+			{{/if}}
 		</div>
 	</div>
 </body>
 
 <template name="concern">
-	<li>{{text}}</li>
+	<li>
+		{{#if owner}}
+			{{owner}}:
+		{{/if}}
+		{{text}}
+	</li>
 </template>
