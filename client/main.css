@@ -1,1 +1,6 @@
 /* CSS declarations go here */
+@media (min-width: 1200px) {
+	.container {
+		max-width: 600px;
+	}
+}

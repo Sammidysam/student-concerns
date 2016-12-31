@@ -1,37 +1,35 @@
 <body>
 	<div class="container">
-		<div class="col-md-6 col-md-offset-3">
-			{{> loginButtons}}
+		{{> loginButtons}}
 
-			<header>
-				<h1 class="text-center">Have a concern?</h1>
-			</header>
+		<header>
+			<h1 class="text-center">Have a concern?</h1>
+		</header>
 
-			<form class="new-concern">
-				<div class="form-group">
-					<textarea name="text" rows="4" class="form-control" placeholder="Type to add new concern..."></textarea>
+		<form class="new-concern">
+			<div class="form-group">
+				<textarea name="text" rows="4" class="form-control" placeholder="Type to add new concern..."></textarea>
+			</div>
+			<div class="form-group">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="anonymous" checked />
+						Make this concern anonymous
+					</label>
 				</div>
-				<div class="form-group">
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="anonymous" checked />
-							Make this concern anonymous
-						</label>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-default btn-block">Submit Concern</button>
-			</form>
+			</div>
+			<button type="submit" class="btn btn-default btn-block">Submit Concern</button>
+		</form>
 
-			{{#if currentUser}}
-				<h1>Concerns</h1>
+		{{#if currentUser}}
+			<h1>Concerns</h1>
 
-				<ul>
-					{{#each concerns}}
-						{{> concern}}
-					{{/each}}
-				</ul>
-			{{/if}}
-		</div>
+			<ul>
+				{{#each concerns}}
+					{{> concern}}
+				{{/each}}
+			</ul>
+		{{/if}}
 	</div>
 </body>
 
