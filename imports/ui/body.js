@@ -4,6 +4,10 @@ import { Concerns } from '../api/concerns.js';
 
 import './body.html';
 
+Template.body.onCreated(function bodyOnCreated() {
+	Meteor.subscribe('concerns');
+});
+
 Template.body.events({
 	'submit .new-concern'(event) {
 		event.preventDefault();
