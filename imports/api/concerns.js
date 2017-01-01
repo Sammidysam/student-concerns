@@ -7,7 +7,9 @@ export const Concerns = new Mongo.Collection('concerns');
 if (Meteor.isServer) {
 	// Return Concerns only if the user is logged in.
 	Meteor.publish('concerns', function concernsPublication() {
-		return this.userId && Meteor.users.findOne(this.userId).services.google.email == "craigsamm@gmail.com" && Concerns.find();
+		// Meteor.users.findOne(this.userId).services.google.email == "blah"
+		// in second logic point is where we check emails
+		return this.userId && Concerns.find();
 	});
 
 	// Return Meteor email address.
