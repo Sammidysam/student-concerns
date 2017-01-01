@@ -5,7 +5,9 @@ import { Concerns } from '../api/concerns.js';
 import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
-	Meteor.subscribe('concerns');
+	this.autorun(() => {
+		Meteor.subscribe('concerns', Meteor.userId());
+	});
 });
 
 Template.body.events({
