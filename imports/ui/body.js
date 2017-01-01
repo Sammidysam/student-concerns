@@ -29,6 +29,9 @@ Template.body.events({
 });
 
 Template.body.helpers({
+	canSeeConcerns() {
+		return Meteor.userId() && Concerns.find().count() > 0;
+	},
 	concerns() {
 		return Concerns.find({}, { sort: { createdAt: -1 } });
 	}
