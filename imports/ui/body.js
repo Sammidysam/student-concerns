@@ -5,9 +5,13 @@ import { Concerns } from '../api/concerns.js';
 import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
+	// Whenever Meteor.userId() changes (log in / out), the new subscription
+	// results will be retrieved.
 	this.autorun(() => {
 		Meteor.subscribe('concerns', Meteor.userId());
 	});
+
+	Meteor.subscribe('userData');
 });
 
 Template.body.events({

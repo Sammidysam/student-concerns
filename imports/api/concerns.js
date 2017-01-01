@@ -7,7 +7,15 @@ export const Concerns = new Mongo.Collection('concerns');
 if (Meteor.isServer) {
 	// Return Concerns only if the user is logged in.
 	Meteor.publish('concerns', function concernsPublication() {
-		return this.userId && Meteor.users.findOne(this.userId).profile.name == "Sam Craig" && Concerns.find();
+		return this.userId && Meteor.users.findOne(this.userId).services.google.email == "craigsamm@gmail.com" && Concerns.find();
+	});
+
+	// Return Meteor email address.
+	Meteor.publish('userData', function userDataPublication() {
+		if (this.userId)
+			return Meteor.users.find({ _id: this.userId }, { fields: { services: 1 }});
+		else
+			this.ready();
 	});
 }
 
@@ -20,7 +28,7 @@ Meteor.methods({
             createdAt: new Date()
         };
         if (!anonymous && Meteor.userId())
-            concern["owner"] = Meteor.user().profile.name;
+            concern['owner'] = Meteor.user().profile.name;
 
         Concerns.insert(concern);
     }
