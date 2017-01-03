@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 
 import { Concerns } from '../api/concerns.js';
+import { Permissions } from '../api/permissions.js';
 
 import './body.html';
 
@@ -9,6 +10,7 @@ Template.body.onCreated(function bodyOnCreated() {
 	// results will be retrieved.
 	this.autorun(() => {
 		Meteor.subscribe('concerns', Meteor.userId());
+		Meteor.subscribe('permissions', Meteor.userId());
 	});
 
 	Meteor.subscribe('userData');
@@ -32,7 +34,13 @@ Template.body.helpers({
 	canSeeConcerns() {
 		return Meteor.userId() && Concerns.find().count() > 0;
 	},
+	canSeePermissions() {
+		return Meteor.userId() && Permissions.find().count() > 0;
+	},
 	concerns() {
 		return Concerns.find({}, { sort: { createdAt: -1 } });
+	},
+	permissions() {
+		return Permissions.find({}, { sort: { email: 1 } });
 	}
 });

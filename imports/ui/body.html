@@ -30,6 +30,16 @@
 				{{/each}}
 			</ul>
 		{{/if}}
+
+		{{#if canSeePermissions}}
+			<h1>Permissions</h1>
+
+			<ul>
+				{{#each permissions}}
+					{{> permission}}
+				{{/each}}
+			</ul>
+		{{/if}}
 	</div>
 </body>
 
@@ -39,5 +49,11 @@
 			{{owner}}:
 		{{/if}}
 		{{text}} - {{createdAt}}
+	</li>
+</template>
+
+<template name="permission">
+	<li>
+		{{email}}
 	</li>
 </template>
