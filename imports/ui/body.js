@@ -27,6 +27,16 @@ Template.body.events({
 		Meteor.call('concerns.insert', text, anonymous);
 
 		target.text.value = '';
+	},
+	'submit .new-permission'(event) {
+		event.preventDefault();
+
+		const target = event.target;
+		const email = target.email.value;
+
+		Meteor.call('permissions.insert', email);
+
+		target.email.value = '';
 	}
 });
 
