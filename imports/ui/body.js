@@ -60,5 +60,15 @@ Template.permission.events({
 		event.preventDefault();
 
 		Meteor.call('permissions.remove', this._id);
+	},
+	'mouseenter'(event) {
+		event.preventDefault();
+
+		document.getElementById(this.email).style.color = 'red';
+	},
+	'mouseleave'(event) {
+		event.preventDefault();
+
+		document.getElementById(this.email).style.color = 'black';
 	}
 });
