@@ -18,5 +18,8 @@ Meteor.methods({
 		Permissions.insert({
 			email: email
 		});
+	},
+	'permissions.remove'(id) {
+		Permissions.remove(id);
 	}
 });

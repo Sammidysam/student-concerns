@@ -34,6 +34,11 @@
 		{{#if canSeePermissions}}
 			<h1>Permissions</h1>
 
+			<p>
+				Click on an email to remove their permissions.
+				Any email with permissions can see the submitted student concerns.
+			</p>
+
 			<ul>
 				{{#each permissions}}
 					{{> permission}}
@@ -57,7 +62,7 @@
 </template>
 
 <template name="permission">
-	<li>
+	<li style="cursor:pointer">
 		{{email}}
 	</li>
 </template>

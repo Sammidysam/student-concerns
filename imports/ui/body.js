@@ -54,3 +54,11 @@ Template.body.helpers({
 		return Permissions.find({}, { sort: { email: 1 } });
 	}
 });
+
+Template.permission.events({
+	'click'(event) {
+		event.preventDefault();
+
+		Meteor.call('permissions.remove', this._id);
+	}
+});
