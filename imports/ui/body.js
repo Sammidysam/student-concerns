@@ -27,6 +27,7 @@ Template.body.events({
 		Meteor.call('concerns.insert', text, anonymous);
 
 		target.text.value = '';
+		target.text.placeholder = 'Concern submitted successfully! Type to add new concern...';
 	},
 	'submit .new-permission'(event) {
 		event.preventDefault();
