@@ -13,7 +13,7 @@
 			<div class="form-group">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="anonymous" checked />
+						<input type="checkbox" name="anonymous" disabled={{#unless currentUser}}"disabled"{{/unless}} checked />
 						Make this concern anonymous
 					</label>
 				</div>
