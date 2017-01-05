@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { Match } from 'meteor/check';
 
 import { Permissions } from './permissions.js';
 
@@ -15,7 +16,10 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 	'concerns.insert'(text, anonymous) {
-		check(text, String);
+		check(text, Match.Where(function (x) {
+			check(x, String);
+			return x.length > 0;
+		}));
 
 		concern = {
             text: text,
